@@ -1,0 +1,38 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="editTimeForOADialogFragment" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:f="sap.f" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:form="sap.ui.layout.form">
+	<Dialog id="editTimeForOADialog" title="{i18n>editTargetTimeForOADialogTitle}">
+		<content>
+			
+			<VBox id="idEditTimeForOADialogVBox" class="sapUiSmallMargin">
+				<Label id="idTargetTimeLable" class="sapUiTinyMargin" textAlign="Center"/>
+				<HBox  id="idEditTimeForOADialogHBox" class="sapUiTinyMarginBeginEnd">
+					<Input class="sapUiTinyMarginEnd" id="inputTime" type="Number" placeholder="{i18n>EnterANumber}" value="{
+					      type : 'sap.ui.model.type.Integer',
+					      constraints : {
+					          minimum: 1,
+					          maximum: 9999
+					   }
+					}" liveChange="onEditTimeForOADialogLiveChange" />
+					<Select id="selectTimeUnit" class="sapUiTinyMarginBeginEnd" forceSelection="true" selectedKey="MIN">
+						<items>
+							<core:Item id="idEditTimeForOADialogSecond" key="S" text="{i18n>Second}"/>
+							<core:Item id="idEditTimeForOADialogMinute" key="MIN" text="{i18n>Minute}"/>
+							<core:Item id="idEditTimeForOADialogHour" key="HOUR" text="{i18n>Hour}"/>
+							<core:Item id="idEditTimeForOADialogDay" key="DAY" text="{i18n>Day}"/>
+						</items>
+					</Select>
+				</HBox>
+			</VBox>
+			
+		</content>
+		<buttons>
+			<Button id="idEditTimeForOADialogSaveButtonText" enabled="true" text="{i18n>saveButtonText}" type="Emphasized" press="onEditTimeForOADialogSaveTime"/>
+			<Button id="idEditTimeForOADialogCancelButtonText" text="{i18n>cancelButtonText}" press="onEditTimeForOADialogCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

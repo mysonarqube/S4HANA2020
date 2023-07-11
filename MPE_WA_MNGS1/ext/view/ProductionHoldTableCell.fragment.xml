@@ -1,0 +1,15 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<HBox id="idProductionHoldTableCellHBox" justifyContent="Center">
+		<core:Icon id="idProductionHoldTableCellIcon"
+			color="{parts:[{path:'ProductionHold'}], formatter:'.formatter.setOrderHoldIssueIconColor'}"
+            src="sap-icon://status-error" 
+            tooltip="{= parseInt( ${ProductionHold} ) > 0 ? ${i18n|sap.suite.ui.generic.template.ListReport|C_ProcgExecOpActyInstceTP>OpActyIsOnHold} : ${i18n|sap.suite.ui.generic.template.ListReport|C_ProcgExecOpActyInstceTP>OpActyIsNotOnHold}}"
+        	ariaLabelledBy="idProductionHoldColumnText">
+		</core:Icon>
+	</HBox>
+</core:FragmentDefinition>

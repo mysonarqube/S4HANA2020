@@ -1,0 +1,29 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="UserPopoverFragment" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:f="sap.f" xmlns:smartTable="sap.ui.comp.smarttable">
+	
+	<Popover id="idUserPopover" title="{i18n>AssignedOperators}" showHeader="true" contentWidth="16rem" contentHeight="24rem" placement="Auto">
+		<NavContainer id="navConUsersPopover">
+			<Page id="masterUsersPopover" showHeader="false">
+				<List id="usersListPopover" items="{ path: '/I_OpActyUserAssgmt' }">
+					<StandardListItem id="usersListPopoverStandardListItem" title="{UserDescription}" description="{UserID}" type="Inactive" icon="sap-icon://employee"
+						press="onNavToUsersPopoverDetails" iconDensityAware="false" iconInset="false"/>
+				</List>
+			</Page>
+			
+			<Page id="detailUsersPopover" showNavButton="true" navButtonPress="onNavBack" title="{Product}" showHeader="false">
+				<ObjectHeader id="detailUsersPopoverObjectHeader" title="{UserID}">
+					<attributes>
+						<ObjectAttribute id="detailUsersPopoverUserIDUserID" text="{UserIDUserID}"/>
+						<ObjectAttribute id="detailUsersPopoverUserID" text="{UserID}"/>
+						<ObjectAttribute id="detailUsersPopoverUserID2" text="{UserID}"/>
+					</attributes>
+				</ObjectHeader>
+			</Page>
+		</NavContainer>
+	</Popover>
+</core:FragmentDefinition>

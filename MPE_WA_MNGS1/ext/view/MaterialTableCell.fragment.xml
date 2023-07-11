@@ -1,0 +1,11 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f">
+	<VBox id="idMaterialTableCellVBox" alignItems="Start">
+		<Link id="idMaterialTableCellVLink" text="{path:'Material'}" press=".handleMaterialLinkPress"/>
+		<Text id="idMaterialTableCellVText" class="sapUiTinyMarginTop" text="{path:'MaterialName'}"></Text>
+	</VBox>
+</core:FragmentDefinition>

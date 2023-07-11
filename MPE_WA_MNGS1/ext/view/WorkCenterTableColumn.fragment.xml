@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Column id="idWorkCenterTableColumn" hAlign="Left" minScreenWidth="Desktop" demandPopin="true">
+		<Text id= "idWorkCenterColumnText" text="{path:'/#C_ProcgExecOpActyInstceTP/WorkCenter/@sap:label'}" tooltip="{path:'/#C_ProcgExecOpActyInstceTP/WorkCenter/@sap:label'}"></Text>
+		<customData>
+			<core:CustomData id="idWorkCenterTableColumnCustomData" key="p13nData" value='\{"columnKey": "WorkCenter", "leadingProperty":"WorkCenter,to_WorkCenterBySemanticKey/WorkCenter_Text", "columnIndex" : "98"}'/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

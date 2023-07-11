@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://localhost/" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://localhost/" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://localhost/" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="MPE_MATERIAL_POVER" sap:schema-version="1" xml:lang="en" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="C_MPEMaterialPoverType" sap:content-version="1" sap:label="Material Pop Over">
+                <Key>
+                    <PropertyRef Name="Material"/>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="StorageLocation"/>
+                </Key>
+                <Property MaxLength="40" Name="Material" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property MaxLength="4" Name="Plant" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property MaxLength="4" Name="StorageLocation" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Storage Location" sap:text="StorageLocationName"/>
+                <Property MaxLength="16" Name="StorageLocationName" Type="Edm.String" sap:label="Storage Loc. Name" sap:quickinfo="Storage Location Name"/>
+                <Property MaxLength="30" Name="ProductionPlant" Type="Edm.String" sap:label="Plant Name"/>
+                <Property MaxLength="4" Name="MRPPlant" Type="Edm.String" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property MaxLength="40" Name="ProductDescription" Type="Edm.String" sap:label="Product Description"/>
+                <Property MaxLength="3" Name="MRPController" Type="Edm.String" sap:display-format="UpperCase" sap:label="MRP Controller" sap:text="MRPControllerName"/>
+                <Property MaxLength="18" Name="MRPControllerName" Type="Edm.String" sap:label="MRP Controller Name"/>
+                <Property MaxLength="12" Name="MRPControllerPhoneNumber" Type="Edm.String" sap:display-format="UpperCase" sap:label="MRP Controller Phone" sap:quickinfo="MRP Controller's Phone Number"/>
+                <Property MaxLength="3" Name="ProductionSupervisor" Type="Edm.String" sap:display-format="UpperCase" sap:label="Prodn Supervisor" sap:quickinfo="Production Supervisor"/>
+                <Property MaxLength="30" Name="ProductionSupervisorName" Type="Edm.String" sap:label="Prodn Superv. Name" sap:quickinfo="Production Supervisor Name"/>
+                <Property MaxLength="2" Name="MRPType" Type="Edm.String" sap:display-format="UpperCase" sap:label="MRP Type"/>
+                <Property MaxLength="60" Name="MRPTypeName" Type="Edm.String" sap:label="MRP Type Name" sap:quickinfo="Material Requirements Planning Type Description"/>
+                <Property Name="VltdUnrestrictedUseStkQty" Precision="13" Scale="3" Type="Edm.Decimal" sap:label="Unrestricted" sap:quickinfo="Valuated Unrestricted-Use Stock" sap:unit="BaseUnit"/>
+                <Property Name="QualityInspectionStockQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="TransferStockStorageLocQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="StockInTransferQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="RestrictedStockQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="BlockedStockQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SalesUnrestrictedStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SalesQualityInspectionStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SlsStkInTransfStorLocStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SalesStockInTransfPlntStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SalesRestrictedUserStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="SalesBlockedStockQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjStkUnrestrictedUseStkQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjectQualityInspectionStkQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjStkInTransfStorLocStkQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjectStockInTransfPlntStkQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjectRestrictedUserStockQty" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property Name="ProjectBlockedStockQuantity" Precision="31" Scale="14" Type="Edm.Decimal" sap:unit="BaseUnit"/>
+                <Property MaxLength="6" Name="ProductionSchedulingProfile" Type="Edm.String" sap:display-format="UpperCase" sap:label="Prod. Sched. Profile" sap:quickinfo="Production Scheduling Profile"/>
+                <Property MaxLength="4" Name="SerialNumberProfile" Type="Edm.String" sap:display-format="UpperCase" sap:label="Serial No. Profile" sap:quickinfo="Serial Number Profile"/>
+                <Property MaxLength="20" Name="SerialNumberProfileName" Type="Edm.String" sap:label="Profile text" sap:quickinfo="Text for Serial Number Profile"/>
+                <Property Name="IsApprovedBatchRecordReqd" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Appr.Batch Recd Req." sap:quickinfo="Approved Batch Record Required"/>
+                <Property Name="UnderDelivToleranceLimit" Precision="3" Scale="1" Type="Edm.Decimal" sap:label="Underdely tolerance" sap:quickinfo="Underdelivery tolerance limit" sap:unit="DeliveryToleranceUnit"/>
+                <Property Name="OverDelivToleranceLimit" Precision="3" Scale="1" Type="Edm.Decimal" sap:label="Overdely tolerance" sap:quickinfo="Overdelivery tolerance limit" sap:unit="DeliveryToleranceUnit"/>
+                <Property MaxLength="60" Name="MaterialProcurementCatName" Type="Edm.String" sap:label="Category Name" sap:quickinfo="Material Procurement Category Name"/>
+                <Property MaxLength="2" Name="SpecialProcurementType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
+                <Property Name="SafetyStockQuantity" Precision="13" Scale="3" Type="Edm.Decimal" sap:label="Safety stock" sap:unit="BaseUnit"/>
+                <Property MaxLength="3" Name="DeliveryToleranceUnit" Type="Edm.String" sap:label="Unit" sap:semantics="unit-of-measure"/>
+                <Property MaxLength="3" Name="BaseUnit" Type="Edm.String" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+                <Property MaxLength="3" Name="MRPResponsible" Type="Edm.String" sap:display-format="UpperCase" sap:label="MRP controller"/>
+                <Property MaxLength="1" Name="ProcurementType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Procurement type" sap:quickinfo="Procurement Type"/>
+            </EntityType>
+            <EntityContainer Name="MPE_MATERIAL_POVER_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet EntityType="MPE_MATERIAL_POVER.C_MPEMaterialPoverType" Name="C_MPEMaterialPover" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/>
+            </EntityContainer>
+            <Annotations Target="MPE_MATERIAL_POVER.MPE_MATERIAL_POVER_Entities/C_MPEMaterialPover" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>P_LANGUAGE</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>P_LANGUAGE</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link href="http://localhost/DUMMY_SERVICE/$metadata" rel="self" xmlns:atom="http://www.w3.org/2005/Atom"/>
+                <atom:link href="http://localhost/DUMMY_SERVICE/$metadata" rel="latest-version" xmlns:atom="http://www.w3.org/2005/Atom"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,16 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<core:Fragment id="idAssignedToTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.AssignedToTableCell" type="XML"/>
+	<core:Fragment id="idProductionPlantTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.ProductionPlantTableCell" type="XML"/>
+	<core:Fragment id="idMaterialTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.MaterialTableCell" type="XML"/>
+	<core:Fragment id="idWorkCenterTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.WorkCenterTableCell" type="XML"/>
+	<core:Fragment id="idStartDateTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.StartDateTableCell" type="XML"/>
+	<core:Fragment id="idOperationTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.OperationTableCell" type="XML"/>
+<!--	<core:Fragment fragmentName="i2d.mpe.workassign.manages1.ext.view.OrderTableCell" type="XML"/> -->
+	<core:Fragment id="idEffectivityParameterDescTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.EffectivityParameterDescTableCell" type="XML"/>
+	<core:Fragment id="idProductionHoldTableCellFragment" fragmentName="i2d.mpe.workassign.manages1.ext.view.ProductionHoldTableCell" type="XML"/>
+</core:FragmentDefinition>

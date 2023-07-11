@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Column id="idProductionPlantTableColumn" hAlign="Left">
+		<Text id="idProductionPlantTableColumnText" text="{path:'/#C_ProcgExecOpActyInstceTP/ProductionPlant/@sap:label'}" tooltip="{path:'/#C_ProcgExecOpActyInstceTP/ProductionPlant/@sap:quickinfo'}"></Text>
+		<customData>
+			<core:CustomData id="idProductionPlantTableColumnCustomData" key="p13nData" value='\{"columnKey": "ProductionPlant,to_ProductionPlant/PlantName", "leadingProperty":"ProductionPlant,to_ProductionPlant/PlantName", "columnIndex" : "100"}'/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

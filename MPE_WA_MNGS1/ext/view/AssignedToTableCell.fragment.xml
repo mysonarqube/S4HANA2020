@@ -1,0 +1,17 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f">
+	<HBox id="idAssignedToTableCellHBox" alignItems="Center" visible="{= ${NrOfOpActyUserAssignments} > 0 ? true: false }">
+		<f:Avatar id="idAssignedToTableAvatar" src="{= ${NrOfOpActyUserAssignments} > 1 ? 'sap-icon://collaborate' : 'sap-icon://employee' }" displaySize="S"></f:Avatar>
+			<VBox id="idAssignedToTableVBox">
+				<Link id="idAssignedToTableLink" class="sapUiTinyMarginBeginEnd" visible="{= ${NrOfOpActyUserAssignments} > 1 ? true: false }"
+				text="{parts:[{path:'NrOfOpActyUserAssignments'},{path:'UserDescription'}], formatter: '.formatter.formateUserName' }" press="onUserLinkPress"/>
+				
+				<Text id="idAssignedToTableText" class="sapUiTinyMarginBeginEnd" visible="{= ${NrOfOpActyUserAssignments} > 1 ? false: true }"
+				text="{parts:[{path:'NrOfOpActyUserAssignments'},{path:'UserDescription'}], formatter: '.formatter.formateUserName' }" />
+			</VBox>
+		</HBox>
+</core:FragmentDefinition>

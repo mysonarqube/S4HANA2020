@@ -1,0 +1,84 @@
+<!--
+
+    Copyright (C) 2009-2020 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="/sap/bc/ui5_ui5/ui2/ushell/resources/sap/ushell/components/factsheet/vocabularies/UI.xml">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/sap/opu/odata/sap/MPE_BP_CERTIFICATE_ASSIGNMENT_SRV/$metadata">
+		<edmx:Include Alias="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV" Namespace="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs02/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="vCard" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="CQP" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="i2d.mpe.mfguser.manages1.MPE_BP_CERTIFICATE_ASSIGNMENT_SRV">
+			<!--===============================================================================
+                Entity Type from chosen collection 
+                ================================================================================-->
+			<Annotations Target="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV.C_MfgBusinessPartnerTPType">
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Label" String="{@i18n&gt;@WORKCENTERS}"/>
+							<PropertyValue Property="Target" AnnotationPath="to_MfgBPWrkCtr/@UI.LineItem"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<!--===============================================================================
+                Entity Type from chosen navigation property
+                ================================================================================-->
+			<Annotations Target="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV.C_MfgBPQualifnCertAssgmtType">
+				<Annotation Term="UI.Facets">
+					<Collection>
+						<Record Type="UI.CollectionFacet">
+							<PropertyValue String="GeneralInformation" Property="ID"/>
+							<PropertyValue String="{@i18n&gt;@GeneralInfoFacetLabel}" Property="Label"/>
+							<PropertyValue Property="Facets">
+								<Collection>
+									<Record Type="UI.ReferenceFacet">
+										<PropertyValue String="{@i18n&gt;@GeneralInfoFacetLabel}" Property="Label"/>
+										<PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+									</Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV.C_MfgBusinessPartnerTPType">
+				<Annotation Term="UI.HeaderFacets">
+					<Collection>
+						<Record Type="UI.ReferenceFacet">
+							<PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV.C_MfgBusinessPartnerTPType/EmailAddress">
+				<Annotation Term="vCard.IsEmailAddress"/>
+			</Annotations>
+			<Annotations Target="MPE_BP_CERTIFICATE_ASSIGNMENT_SRV.C_MfgBusinessPartnerTPType/PhoneNumber">
+				<Annotation Term="vCard.IsPhoneNumber"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

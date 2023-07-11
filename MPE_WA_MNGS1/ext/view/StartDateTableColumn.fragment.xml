@@ -1,0 +1,14 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Column id="idStartDateTableColumn" hAlign="End" minScreenWidth="Desktop" demandPopin="true">
+		<Text id="idStartDateTableColumnText" text="{path:'/#C_ProcgExecOpActyInstceTP/OpLtstSchedldExecStrtDteTme/@sap:label'}" tooltip="{path:'/#C_ProcgExecOpActyInstceTP/OpLtstSchedldExecStrtDteTme/@sap:quickinfo'}"
+			class="sapUiTinyMarginEnd"></Text>
+		<customData>
+			<core:CustomData id="idStartDateTableColumnCustomData" key="p13nData" value='\{"columnKey": "OpLtstSchedldExecStrtDteTme", "leadingProperty":"OpLtstSchedldExecStrtDteTme,DateIsActualDate", "columnIndex" : "102"}'/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

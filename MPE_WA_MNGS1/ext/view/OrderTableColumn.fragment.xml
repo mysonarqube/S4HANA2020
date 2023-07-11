@@ -1,0 +1,13 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+	<Column id="idOrderTableColumn" hAlign="Left" minScreenWidth="Desktop" demandPopin="true">
+		<Text id="idOrderTableText" text="{path:'/#C_ProcgExecOpActyInstceTP/ManufacturingOrder/@sap:label'}" tooltip="{path:'/#C_ProcgExecOpActyInstceTP/ManufacturingOrder/@sap:label'}"></Text>
+		<customData>
+			<core:CustomData id="idOrderTableCustomData" key="p13nData" value='\{"columnKey": "ManufacturingOrder,to_MfgOrder/ManufacturingOrderText", "leadingProperty":"ManufacturingOrder,to_MfgOrder/ManufacturingOrderText", "columnIndex" : "95"}'/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

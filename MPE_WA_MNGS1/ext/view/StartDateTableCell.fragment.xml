@@ -1,0 +1,22 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.f">
+	
+	<VBox id="idStartDateTableCellVBoxEnd" alignItems="End">
+		<HBox id="idStartDateTableCellVBoxCenter" alignItems="Center">
+			<core:Icon id="idStartDateTableCellIcon"  src="sap-icon://future" visible="{= ${DateIsActualDate} ? false : true}" tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_ProcgExecOpActyInstceTP>scheduled}"> </core:Icon>
+			<VBox id="idStartDateTableCellVBoxText" alignItems="End" class="sapUiTinyMarginBeginEnd">
+		        <Text id="idStartDateTableCellTextDate" text="{path : 'OpLtstSchedldExecStrtDteTme', 
+		             type : 'sap.ui.model.type.DateTime',
+		             formatOptions: { pattern: 'MMM dd,yyyy' }}"/>
+		       <Text id="idStartDateTableCellTextTime" text="{path : 'OpLtstSchedldExecStrtDteTme', 
+		         type : 'sap.ui.model.type.DateTime',
+		         formatOptions: { pattern: 'hh:mm:ss a' }}" class="sapUiTinyMarginTop"/>
+			</VBox>
+		</HBox>
+	</VBox>
+
+</core:FragmentDefinition>

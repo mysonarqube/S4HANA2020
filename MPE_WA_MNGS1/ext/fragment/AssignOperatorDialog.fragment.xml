@@ -1,0 +1,233 @@
+<!--
+
+    Copyright (C) 2009-2021 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="assignOperatorDialogFragment" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:smartField="sap.ui.comp.smartfield"
+	xmlns:smartForm="sap.ui.comp.smartform" xmlns:f="sap.f" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:form="sap.ui.layout.form">
+	<Dialog id="assignOperatorDialog" title="{i18n>AssignOperatorsDialogTitle}" resizable="false" 
+		contentHeight="80%" contentWidth="50%" showHeader="true" >
+		<content>
+			<NavContainer id="navConAssignOperatorDialog">
+				
+				<Page id="masterPageAssignOperatorDialog" title="{i18n>AssignOperatorsDialogTitle}" backgroundDesign="Transparent" showHeader="false">
+					<Table id="assignOperatorDialogTable" fixedLayout="false" noDataText="{i18n>NoOperatorsFound}" mode="MultiSelect"
+						selectionChange="onOperatorDialogSelectionChange" items="{ path: '/I_OpActyAllManufacturingUsers', templateShareable: false }" itemPress="onOperatorDialogItemPress"
+						class="sapUiSmallMarginTopBottom">
+						<headerToolbar>
+							<Toolbar id="idToolbar">
+								<SearchField id="idSearchFieldOperatorDialog" liveChange="onSearchInOperatorDialog" search="onSearchInOperatorDialog"/>
+							</Toolbar>
+						</headerToolbar>
+						<infoToolbar>
+							<Toolbar id="infoToolbar" active="true" press="handleInfobarPress">
+								<Label id="infoToolbarLabel" text="{i18n>filteredBy}"/>
+								<ToolbarSpacer id="infoToolbarToolbarSpacer"/>
+								<core:Icon id="infoToolbarIcon" tooltip="{i18n>resetWorkCenterFilter}" src="sap-icon://sys-cancel" class="size2" press="onResetWorkCenterFilters" decorative="false"></core:Icon>
+							</Toolbar>
+						</infoToolbar>
+						<columns>
+							<Column id="assignOperatorDialogTableColumnOperatorColumn">
+								<header>
+									<Text id="assignOperatorDialogTableColumnOperatorColumnText" text="{i18n>OperatorColumnTxt}"/>
+								</header>
+							</Column>
+							<Column id="assignOperatorDialogTableColumnDefaultWorkCenterColumn" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="assignOperatorDialogTableColumnDefaultWorkCenterColumnText" text="{i18n>DefaultWorkCenterColumnTxt}"/>
+								</header>
+							</Column>
+							<Column id="assignOperatorDialogTableAssignmentsColumn" hAlign="End" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="assignOperatorDialogTableAssignmentsColumnText" text="{i18n>AssignmentsColumnTxt}"/>
+								</header>
+							</Column>
+							<Column id="assignOperatorDialogTableIsQualifiedColumn" hAlign="Center" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="assignOperatorDialogTableIsQualifiedColumnTxt" text="{i18n>IsQualifiedColumnTxt}"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="assignOpertorColumnListItem" vAlign="Middle" type="Navigation">
+								<cells>
+									<HBox id="assignOpertorColumnListItemHBox" alignItems="Center">
+										<f:Avatar id="assignOpertorColumnListItemAvatar" src="sap-icon://employee" displaySize="S"></f:Avatar>
+										<ObjectIdentifier id="assignOpertorColumnListItemObjectIdentifierUserDescription" class="sapUiTinyMarginBeginEnd" title="{UserDescription}" text="{UserID}"/>
+									</HBox>
+									<ObjectIdentifier id="assignOpertorColumnListItemObjectIdentifierWorkCenter" title="{WorkCenter}" text="{WorkCenterText}"/>
+									<Text id="assignOpertorColumnListItemText" text="{NrOfUsrOpnOpActyAssignments}"/>
+									<core:Icon id="assignOpertorColumnListItemIcon" tooltip="{i18n>RequiredQualificationstoolTip}" src="sap-icon://badge" visible="{UserIsQualified}"></core:Icon>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</Page>
+				
+				<Page id="detailPageAssignOperatorDialog" showNavButton="false" showHeader="false" navButtonPress="onNavBackOperatorDialog" title="{i18n>Operator}" binding="/">
+					<HBox id="detailPageAssignOperatorDialogHBox" alignItems="Center" class="sapUiSmallMarginTop sapUiTinyMarginBegin">
+						<f:Avatar id="detailPageAssignOperatorDialogAvatar" src="sap-icon://employee" displaySize="S" class="sapUiSmallMarginBegin"></f:Avatar>
+						<ObjectIdentifier id="detailPageAssignOperatorDialogObjectIdentifier" class="sapUiTinyMarginBeginEnd" title="{UserDescription}"
+							text="{parts: ['WorkCenter', 'WorkCenterText'], formatter: '.formatter.formateTextWithBraces'}"/>
+					</HBox>
+					<form:SimpleForm id="detailPageAssignOperatorDialogSimpleForm" editable="false" layout="ResponsiveGridLayout" columnsM="1" columnsL="1" columnsXL="1" emptySpanL="0" emptySpanM="0">
+						<form:content>
+							<Label id="detailPageAssignOperatorDialogPhoneNumberLabel" text="{i18n>PhoneNumber}"/>
+							<Link id="detailPageAssignOperatorDialogPhoneNumberLink" text="{to_UserContactCard/PhoneNumber}" press="handlePhoneNumberLinkPress"/>
+							<Label id="detailPageAssignOperatorDialogMobilePhoneNumberLabel" text="{i18n>MobilePhoneNumber}"/>
+							<Link id="detailPageAssignOperatorDialogMobilePhoneNumberLink" text="{to_UserContactCard/MobilePhoneNumber}" press="handleMobilePhoneNumberLinkPress"/>
+							<Label id="detailPageAssignOperatorEmailAddressLabel" text="{i18n>EmailAddress}"/>
+							<Link id="detailPageAssignOperatorEmailAddressLink" text="{to_UserContactCard/EmailAddress}" press="handleEmailAddressLinkPress"/>
+						</form:content>
+					</form:SimpleForm>
+					<Table id="assignmentsTable" mode="SingleSelectLeft" selectionChange="onAssignmentsTableSelectionChange" fixedLayout="false" growing="true" growingThreshold="5" 
+						items="{	path : 'to_UserOpenOpActyAssignment',
+									templateShareable: false,
+									sorter : [{
+            							path : 'OpLtstSchedldExecStrtDteTme',
+            							descending : false
+            						 },{
+            						 path : 'MfgOpActyExecutionPriority',
+            						 descending : true
+            					 }]
+        				}" updateFinished="onUpdateAssignmentsTableFinished" >
+						<headerToolbar>
+							<Toolbar id="assignmentsTableToolbar">
+								<Title id="assignmentsTableTitle" text="{i18n>AssignmentsColumnTxt}" level="H2"/>
+								<ToolbarSpacer id="assignmentsTableToolbarSpacer"></ToolbarSpacer>
+								<Button id="changePriorityButton" text="{i18n>ChangePriority}" enabled="false" press="onClickChangePriority"></Button>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="assignmentsTableOperatorActivityColumn">
+								<header>
+									<Text id="assignmentsTableToolbarOperatorActivityColumnText" text="{i18n>OperatorActivityColumnTxt}"
+										tooltip="{i18n>OperationActivity}"/>
+								</header>
+							</Column>
+							<Column id="assignmentsTableOperationColumn" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="assignmentsTableOperationColumnText" text="{i18n>Operation}"
+										tooltip="{i18n>Operation}"/>
+								</header>
+							</Column>
+							<Column id="assignmentsTableOrderColumn" width="12em" hAlign="Begin" minScreenWidth="Desktop" demandPopin="true" >
+								<header>
+									<Text id="assignmentsTableOrderColumnText" text="{i18n>OrderColumnTxt}"
+										tooltip="{i18n>OrderColumnTxt}"/>
+								</header>
+							</Column>
+							<Column id="assignmentsTableStartDateColumn" width="12em" hAlign="End" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="assignmentsTableStartDateColumnText" text="{path:'/#C_ProcgExecOpActyInstceTP/OpLtstSchedldExecStrtDteTme/@sap:label'}" tooltip="{path:'/#C_ProcgExecOpActyInstceTP/OpLtstSchedldExecStrtDteTme/@sap:quickinfo'}"	class="sapUiTinyMarginEnd"></Text>
+								</header>
+							</Column>	
+							<Column id="executionPriorityColumn" width="12em" hAlign="Center" minScreenWidth="Desktop" demandPopin="true" >
+								<header>
+									<Text id="executionPriorityText" text="{i18n>ExecutionPriority}"
+										tooltip="{i18n>ExecutionPriority}"/>
+								</header>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem id="assignmentsTableOrderColumnListItem" highlight="None" vAlign="Middle">
+								<cells>
+									<ObjectIdentifier id="assignmentsTableOrderOperationActivityName" title="{parts: ['i18n>Step', 'OpActyNtwkElementExternalID'], formatter: 'jQuery.sap.formatMessage'}"
+										text="{OperationActivityName}"/>
+									<ObjectIdentifier id="assignmentsTableOrderManufacturingOrderOperation" title="{ManufacturingOrderOperation}" text="{MfgOrderOperationText}"/>
+									<Text  id="assignmentsTableOrderManufacturingOrder" text="{ManufacturingOrder}"/>
+									<VBox id="assignmentsTabledStartDateTableCellVBoxEnd" alignItems="End">
+										<HBox id="assignmentsTabledStartDateTableCellVBoxCenter" alignItems="Center">
+											<core:Icon id="assignmentsTabledStartDateTableCellIcon"  src="sap-icon://future" visible="{= ${DateIsActualDate} ? false : true}" tooltip="{i18n>scheduled}"> </core:Icon>
+											<VBox id="assignmentsTabledStartDateTableCellVBoxText" alignItems="End" class="sapUiTinyMarginBeginEnd">
+										        <Text id="assignmentsTabledStartDateTableCellTextDate" text="{path : 'OpLtstSchedldExecStrtDteTme', 
+										             type : 'sap.ui.model.type.DateTime',
+										             formatOptions: { pattern: 'MMM dd,yyyy' }}"/>
+										       <Text id="assignmentsTabledStartDateTableCellTextTime" text="{path : 'OpLtstSchedldExecStrtDteTme', 
+										         type : 'sap.ui.model.type.DateTime',
+										         formatOptions: { pattern: 'hh:mm:ss a' }}" class="sapUiTinyMarginTop"/>
+											</VBox>
+										</HBox>
+									</VBox>
+									<Text id="executionPriorityCell" text="{MfgOpActyExecutionPriority} "></Text>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+					
+					<Table id="activeQualificationsTable" class="sapUiSmallMarginTopBottom" growing="true" 
+								items="{ 
+										path : 'to_MfgHumRsceQualifnBP',
+										templateShareable: false,
+										parameters: {expand: 'to_ValidityStatus'}
+										}" 
+								updateFinished="onUpdateActiveQualificationsTableFinished">
+						<headerToolbar>
+							<Toolbar id="activeQualificationsTableToolbar">
+								<Title id="activeQualificationsTableTitle" text="{i18n>AssignedQualifications}" level="H2"/>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column id="activeQualificationsTableColumnQualification">
+								<header>
+									<Text id="activeQualificationsTableColumnQualificationText" text="{i18n>Qualification}"
+										tooltip="{i18n>QualificationName}"/>
+								</header>
+							</Column>
+							<Column id="activeQualificationsTableColumnProficiency" hAlign="Begin" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="activeQualificationsTableColumnProficiencyText" text="{i18n>Proficiency}"
+										tooltip="{i18n>UserProficiencyLevel}"/>
+								</header>
+							</Column>
+							<Column id="activeQualificationsTableColumnQualificationStatus" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="activeQualificationsTableColumnQualificationStatusText" text="{i18n>QualificationStatus}"
+										tooltip="{i18n>ValidityStatus}"/>
+								</header>
+							</Column>
+							<Column id="activeQualificationsTableColumnAssignDate" hAlign="Begin" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="activeQualificationsTableColumnAssignDateText" text="{i18n>AssignDate}"
+										tooltip="{path:'/#C_MfgHumRsceQualifnBPType/ValidityStartDate/@sap:quickinfo'}"/>
+								</header>
+							</Column>
+							<Column id="activeQualificationsTableColumnExpirDate" hAlign="Begin" minScreenWidth="Desktop" demandPopin="true">
+								<header>
+									<Text id="activeQualificationsTableColumnExpirDateText" text="{i18n>ExpirDate}"
+										tooltip="{path:'/#C_MfgHumRsceQualifnBPType/ValidityEndDate/@sap:label'}"/>
+								</header>
+							</Column>
+						</columns>
+						<items >
+							<ColumnListItem id= "idQualificationsTableColumnListItem" highlight="None" vAlign="Middle">
+								<cells>
+									<ObjectIdentifier id="idQualificationsTableColumnListItemMfgHumRsceQualificationDesc" title="{MfgHumRsceQualificationDesc}" text="{MfgHumanResourceQualification}"/>
+									<Text id="idQualificationsTableColumnListMfgQualifnRqdSkillLevelDesc" text="{MfgQualifnRqdSkillLevelDesc}"/>
+									<ObjectStatus id="idQualificationsTableColumnListMfgQualifnValidityStatus" state="{= ${MfgQualifnValidityStatus} === '1' ? 'Success' : 'Error'}" text="{= ${MfgQualifnValidityStatus} === '1' ? ${i18n>Active} : ${i18n>Expired} }" />
+									<VBox id="idQualificationsTableColumnVBoxStartDate" alignItems="Start">
+										<Text id="idQualificationsTableColumnValidityStartDate" text="{path : 'ValidityStartDate', type : 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MMM dd,yyyy' }}"/>
+										<Text id="idQualificationsTableColumnValidityStartDateTime" text="{path : 'ValidityStartDate', type : 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'HH:mm' }}"
+											class="sapUiTinyMarginTop"/>
+									</VBox>
+									<VBox id="idQualificationsTableColumnVBoxValidityEndDate" alignItems="Start">
+										<Text id="idQualificationsTableColumnValidityEndDate" text="{path : 'ValidityEndDate', type : 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'MMM dd,yyyy' }}"/>
+										<Text id="idQualificationsTableColumnValidityEndDateTime" text="{path : 'ValidityEndDate', type : 'sap.ui.model.type.DateTime', formatOptions: { pattern: 'HH:mm' }}"
+											class="sapUiTinyMarginTop"/>
+									</VBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</Page>
+				
+			</NavContainer>
+		</content>
+		<buttons>
+			<Button id="backButton" text="{i18n>backButtonText}" press="onNavBackOperatorDialog" enabled="false"/>
+			<Button id="assignButton" text="{i18n>assignButtonText}" press="onAssignOperatorDialogAssign" type="Emphasized" enabled="false"/>
+			<Button id="assignAndEditTimeButton" text="{i18n>assignAndEditTimeButtonText}" press="onAssignOperatorDialogAssignAndTime" enabled="false"/>
+			<Button id="cancelButtonOfAssignOperatorDialog" text="{i18n>cancelButtonText}" press="onAssignOperatorDialogCancel"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
