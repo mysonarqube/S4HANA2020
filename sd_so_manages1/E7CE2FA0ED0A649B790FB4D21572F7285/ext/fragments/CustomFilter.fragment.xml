@@ -1,0 +1,30 @@
+<!--
+
+    Copyright (C) 2009-2022 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns="sap.m">
+	<smartfilterbar:ControlConfiguration id="filterPO_SO" groupId="_BASIC" index="21" key="PurchaseOrderByCustomer"
+		label="{i18n>Customer_Reference}">
+		<smartfilterbar:customControl>
+			<Input id="PurchaseOrderByCustomerValue"></Input>
+		</smartfilterbar:customControl>
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterReqDeliveryDate" groupId="_BASIC" index="22" key="RequestedDeliveryDate"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType' }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterSalesOrderDate" groupId="_BASIC" index="31" key="SalesOrderDate" 
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterCreationDate" key="CreationDate"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterLastChangeDate" key="LastChangeDate"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterSalesOrderType" key="SalesOrderType" displayBehaviour="descriptionAndId">
+	</smartfilterbar:ControlConfiguration>
+</core:FragmentDefinition>
